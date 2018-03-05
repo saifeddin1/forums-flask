@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="\static\topic_add_style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<title>Topic add</title>
+</head>
+<body>
+		<div class="title">
+			<h3>Create a new post</h3>
+		</div>
+    <div class="creation">
+        <form action="{{ url_for('topic_add') }}" method="post">
+
+							<h5 id="header5">Title</h5>
+							<input type="text" name="title" maxlength="20" />
+
+            <div id="content">
+							<h5 id="header55">Write post</h5>
+							<textarea name="content" maxlength="200" rows="16"/>
+								What's in your mind
+							</textarea>
+						</div>
+            <input type="submit" name="Create" class="submition"/>
+        </form>
+    </div>
+
+</body>
+</html>
