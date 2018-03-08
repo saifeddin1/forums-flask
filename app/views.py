@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-import models
+from app import models
 from app import app, member_store, post_store
 
 
