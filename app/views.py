@@ -25,4 +25,19 @@ def topic_delete(id):
     post_store.delete(id)
     return redirect(url_for("home"))
 
+@app.route("/topic/edit/<post>", methods = ["GET", "POST"])
+def topic_edit(post):
+	if request.method == "POST":
+		post_store.update(post)
+		return redirect(url_for("home"))
+	else:
+		return render_template("topic_edit.html")
+
+
+
+
+
+
+
+
 	
