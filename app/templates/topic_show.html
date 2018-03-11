@@ -2,16 +2,20 @@
 <html>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="#">
 
+    {% for post in posts %}
 	<title>{{ post.title }}</title>
+    {% endfor %}
 </head>
 <body>
 	<div>
-		{% for post in posts % }
 		<h1>Title :</h1>
-		<h2>{{ post.title }}</h2>
+        {% for post in posts %}
+        <h2>{{ post.title }}</h2>
+		{% endfor %}
+
 		<h1>Content :</h1>
+        {% for post in posts %}
 		<h2>{{ post.content }}</h2>
 		{% endfor %}
 	</div>

@@ -38,7 +38,7 @@ def topic_delete(id):
     post_store.delete(id)
     return redirect(url_for("home"))
 
-@app.route("/topic/show/<int:id>", methods = ["GET"])
+@app.route("/topic/show/<int:id>")
 def topic_show(id):
 	post_store.get_by_id(id)
 	return render_template("topic_show.html")
