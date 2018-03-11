@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="#">
+
+	<title>{{ post.title }}</title>
+</head>
+<body>
+	<div>
+		{% for post in posts % }
+		<h1>Title :</h1>
+		<h2>{{ post.title }}</h2>
+		<h1>Content :</h1>
+		<h2>{{ post.content }}</h2>
+		{% endfor %}
+	</div>
+
+
+</body>
+</html>
