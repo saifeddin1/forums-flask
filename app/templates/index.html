@@ -24,7 +24,7 @@
             <td class="creation"><a href="">Create a new post</a></td>
             <td class="titles">Edit</td>
             <td>
-              <a href="{{ url_for('topic_delete', id = post.id) }}">delete</a>
+              Delete
             </td>
             </td>
         </tr>
@@ -47,11 +47,10 @@
             </td>
             <td>
                 <ul class="deletion">
-                  <li><a href="">Delete</a></li>
-                  <li><a href="">Delete</a></li>
-                  <li><a href="">Delete</a></li>
-                  <li><a href="">Delete</a></li>
-                  <li><a href="">Delete</a></li>
+                  {% for post in posts %}
+                  <li><a href="{{ url_for('topic_delete', id = post.id) }}">Delete</a></li>
+                  {% endfor %}
+
                 </ul>
             </td>
         </tr>
