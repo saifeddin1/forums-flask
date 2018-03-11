@@ -32,7 +32,7 @@
             <td>
                 <ul class="posts">
                   {% for post in posts %}
-                  <li>{{ post.title }}</li>
+                  <li><a href="{{ url_for('topic_show', id = post.id) }}">{{ post.title }}</a></li>
                   {% endfor %}
                 </ul>
             </td>
