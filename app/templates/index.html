@@ -23,7 +23,10 @@
         <tr>
             <td class="creation"><a href="">Create a new post</a></td>
             <td class="titles">Edit</td>
-            <td class="titles">Delete</td>
+            <td>
+              <a href="{{ url_for('topic_delete', id = post.id) }}">delete</a>
+            </td>
+            </td>
         </tr>
         <tr>
             <td>
