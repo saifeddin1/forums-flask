@@ -22,26 +22,31 @@ def topic_add():
 
 @app.route("/topic/delete/<int:id>")
 def topic_delete(id):
-    post_store.delete(id)
+    if post_store.get_by_id(id) is not None:
+        post_store.delete(id)
     return redirect(url_for("home"))
 
-@app.route("/topic/edit/<post>", methods = ["GET", "POST"])
-def topic_edit(post):
-	if request.method == "POST":
-		post_store.update(post)
-		return redirect(url_for("home"))
-	else:
-		return render_template("topic_edit.html")
+@app.route("/topic/edit/<int:id>", methods = ["GET", "POST"])
+def topic_edit(id):
+    if request.method == "POST":
+        post = post_store.get_by_id(id)
+        if post is not None:
+            post.title = request.form['title']
+            post.content = request.form['content']
+            post_store.update(post)
+            return render_template("topic_show.html", post = post_store.get_by_id(id))
+        return redirect(url_for("home"))
+    else:
 
+        return render_template("topic_edit.html", post = post_store.get_by_id(id))
 
 @app.route("/topic/show/<int:id>")
 def topic_show(id):
-	post_store.get_by_id(id)
-	return render_template("topic_show.html", post=post)
+    if post_store.get_by_id(id) is not None:
+        return render_template("topic_show.html", post = post_store.get_by_id(id))
+    return redirect(url_for("home"))
 
 
 
 
 
-
-	

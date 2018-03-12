@@ -4,25 +4,22 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="\static\forms.css">
 
-	<title>Topic add</title>
+	<title>Topic edit</title>
 </head>
 <body>
-		<div class="title">
-			<h3>Create a new post</h3>
+	<div class="title">
+		<h3>Edit post</h3>
+	</div>
+    <div class="edition">
+        <form action="{{ url_for('topic_edit' , id = post.id) }}" class="add" method="post">
+		<h5 id="header5">edit Title</h5>
+		<input type="text" name="title" maxlength="20" value="{{ post.title }}"/>
+	</div>
+        <div id="content">
+			<h5 id="header55">edit post</h5>
+			<textarea name="content" maxlength="200" rows="16"/>{{ post.content }}</textarea>
 		</div>
-    <div class="creation">
-        <form action="{{ url_for('topic_edit') }}" method="post">
-
-							<h5 id="header5">Title</h5>
-							<input type="text" name="title" maxlength="20" />
-
-            <div id="content">
-							<h5 id="header55">Write post</h5>
-							<textarea name="content" maxlength="200" rows="16"/>
-								What's in your mind
-							</textarea>
-						</div>
-            <input type="submit" name="Create" class="submition"/>
+            <button type="submit">Edit</button>
         </form>
     </div>
 
