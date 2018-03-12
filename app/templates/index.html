@@ -39,7 +39,7 @@
             <td>
                 <ul class="edition">
                   {% for post in posts %}
-                  <li><a href="">Edit</a></li>
+                  <li><a href="{{ url_for('topic_edit', id = post.id) }}">Edit</a></li>
                   {% endfor %}
 
                 </ul>
