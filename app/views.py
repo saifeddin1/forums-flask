@@ -33,10 +33,6 @@ def topic_edit(post):
 	else:
 		return render_template("topic_edit.html")
 
-@app.route("/topic/delete/<int:id>")
-def topic_delete(id):
-    post_store.delete(id)
-    return redirect(url_for("home"))
 
 @app.route("/topic/show/<int:id>")
 def topic_show(id):
