@@ -37,7 +37,7 @@ def topic_edit(post):
 @app.route("/topic/show/<int:id>")
 def topic_show(id):
 	post_store.get_by_id(id)
-	return render_template("topic_show.html")
+	return render_template("topic_show.html", post=post)
 
 
 
