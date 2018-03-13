@@ -1,6 +1,6 @@
 from flask import Flask
 from app import stores, models, dummy_data
-
+from app import api 
 app = Flask(__name__)
 
 member_store = stores.MemberStore()

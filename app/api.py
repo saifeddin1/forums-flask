@@ -3,7 +3,7 @@ from app import models
 from app import app, member_store, post_store
 
 
-@app.route("/topic/api/all")
+@app.route("/api/topic/all")
 def topic_get_all():
     posts = [post.__dict__() for post in post_store.get_all()]
     return jsonify(posts)
@@ -29,7 +29,7 @@ def topic_edit(id):
 		post.content = request_data["content"]
 		post_store.update(post)
 		return jsonify(post.__dict__())
-
+		
 @app.route("/api/topic/delete/<int:id>")
 def topic_delete(id):
 	post = post_store.get_by_id(id)	
