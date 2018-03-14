@@ -34,41 +34,45 @@
         </div>
       </nav>
     </div>
-  <table class="table table-bordered">
-    <thead class="thead-light">
-      <tr>
-        <th class="creation"><a href="{{ url_for('topic_add')}}">Create a new post</a></th>
-        <th class="titles">Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <ul class="list-group">
-            {% for post in posts %}
-              <li class="list-group-item"><a href="{{ url_for('topic_show', id = post.id) }}">{{ post.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </td>
-        <td>
-          <ul class="list-group">
-            {% for post in posts %}
-              <li class="list-group-item"><a href="{{ url_for('topic_edit', id = post.id) }}">Edit</a></li>
-            {% endfor %}
-          </ul>
-        </td>
-        <td>
-          <ul class="list-group">
-            {% for post in posts %}
-              <li class="list-group-item"><a href="{{ url_for('topic_delete', id = post.id) }}">Delete</a></li>
-            {% endfor %}
-          </ul>
-        </td>
-      </tr>
-    </tbody>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th class="creation"><a href="{{ url_for('topic_add')}}">Create a new post</a></th>
+          <th class="titles">Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul class="list-group">
+              {% for post in posts %}
+                <li class="list-group-item"><a href="{{ url_for('topic_show', id = post.id) }}">{{ post.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </td>
+          <td>
+            <ul class="list-group">
+              {% for post in posts %}
+                <li class="list-group-item"><a href="{{ url_for('topic_edit', id = post.id) }}">Edit</a></li>
+              {% endfor %}
+            </ul>
+          </td>
+          <td>
+            <ul class="list-group">
+              {% for post in posts %}
+                <li class="list-group-item"><a href="{{ url_for('topic_delete', id = post.id) }}">Delete</a></li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </table>
-</table>
-<footer>Done by Sifo_TheCoder <b>V1.1</b></footer>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted"><strong>Done by</strong><em>♥Sifo_TheCoder♥</span><b> v1.3
+    </div>
+  </footer>
 </body>
 </html>
