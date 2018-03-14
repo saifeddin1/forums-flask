@@ -1,59 +1,55 @@
 <!doctype html>
-
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
-</head>
-<body>
-    <h1 >One Million Arab Coders Forum</h1>
-    <header>Done by Sifo_THeCoder</header>
-
-    <table cellpadding="10" cellspacing="10" >
-        <tr>
-            <th><a href="">Members</a></th>
-            <th><a href="">Home Page</a></th>
-            <th><a href="">Profile</a></th>
-        </tr>
-          <td>
-                <hr>
-           </td>
-        <tr>
-            <td class="creation"><a href="{{ url_for('topic_add')}}">Create a new post</a></td>
-            <td class="titles">Edit</td>
-            <td>
-              Delete
-            </td>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <ul class="posts">
-                  {% for post in posts %}
-                  <li><a href="{{ url_for('topic_show', id = post.id) }}">{{ post.title }}</a></li>
-                  {% endfor %}
-                </ul>
-            </td>
-            <td>
-                <ul class="edition">
-                  {% for post in posts %}
-                  <li><a href="{{ url_for('topic_edit', id = post.id) }}">Edit</a></li>
-                  {% endfor %}
-
-                </ul>
-            </td>
-            <td>
-                <ul class="deletion">
-                  {% for post in posts %}
-                  <li><a href="{{ url_for('topic_delete', id = post.id) }}">Delete</a></li>
-                  {% endfor %}
-
-                </ul>
-            </td>
-        </tr>
-    </table>
-    <footer>Done by Sifo_TheCoder <b>V1.1</b></footer>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-default">
+        <h1>One million arab coders</h1>
+      </nav>
+    </div>
+  <header>Done by Sifo_THeCoder</header>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th class="creation"><a href="{{ url_for('topic_add')}}">Create a new post</a></th>
+        <th class="titles">Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ul class="list-group">
+            {% for post in posts %}
+              <li class="list-group-item"><a href="{{ url_for('topic_show', id = post.id) }}">{{ post.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </td>
+        <td>
+          <ul class="list-group">
+            {% for post in posts %}
+              <li class="list-group-item"><a href="{{ url_for('topic_edit', id = post.id) }}">Edit</a></li>
+            {% endfor %}
+          </ul>
+        </td>
+        <td>
+          <ul class="list-group">
+            {% for post in posts %}
+              <li class="list-group-item"><a href="{{ url_for('topic_delete', id = post.id) }}">Delete</a></li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</table>
+<footer>Done by Sifo_TheCoder <b>V1.1</b></footer>
 </body>
 </html>
