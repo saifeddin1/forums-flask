@@ -1,21 +1,19 @@
 <!doctype html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="static/css/bootstrap.min.css">
+		<link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
 
-<head>
+			<title>{{ post.title }}</title>
 
-    {% for post in posts %}
-	<title>{{ post.title }}</title>
-    {% endfor %}
-</head>
-<body>
-	<div>
-		<h1>Title :</h1>
-        <h2>{{ post.title }}</h2>
-
-		<h1>Content :</h1>
-		<h2>{{ post.content }}</h2>
-	</div>
-
-
-</body>
+	</head>
+	<body>
+		<div>
+			<h1>Title :</h1>
+			<h2>{{ post.title }}</h2>
+			<h1>Content :</h1>
+			<h2>{{ post.content }}</h2>
+		</div>
+	</body>
 </html>
