@@ -16,12 +16,12 @@ def topic_create():
     return jsonify(new_post.__dict__())
 
 @app.route("/api/topic/show/<int:id>")
-def topic_show(id):
+def api_topic_show(id):
 	post = post_store.get_by_id(id)
 	return jsonify(post.__dict__())
 
 @app.route("/api/topic/edit/<int:id>", methods = ["POST"])
-def topic_edit(id):
+def api_topic_edit(id):
 	request_data = request.get_json()
 	post = post_store.get_by_id(id)
 	if post is not None:
@@ -31,7 +31,7 @@ def topic_edit(id):
 		return jsonify(post.__dict__())
 		
 @app.route("/api/topic/delete/<int:id>")
-def topic_delete(id):
+def api_topic_delete(id):
 	post = post_store.get_by_id(id)	
 	if post is not 	None :
 		post_store.delete(id)
