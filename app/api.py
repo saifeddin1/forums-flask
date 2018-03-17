@@ -20,7 +20,7 @@ def api_topic_show(id):
 	post = post_store.get_by_id(id)
 	return jsonify(post.__dict__())
 
-@app.route("/api/topic/edit/<int:id>", methods = ["POST"])
+@app.route("/api/topic/edit/<int:id>", methods = ["PUT"])
 def api_topic_edit(id):
 	request_data = request.get_json()
 	post = post_store.get_by_id(id)
@@ -30,7 +30,7 @@ def api_topic_edit(id):
 		post_store.update(post)
 		return jsonify(post.__dict__())
 		
-@app.route("/api/topic/delete/<int:id>")
+@app.route("/api/topic/delete/<int:id>", methods = ["DELETE"])
 def api_topic_delete(id):
 	post = post_store.get_by_id(id)	
 	if post is not 	None :
