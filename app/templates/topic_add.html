@@ -4,7 +4,7 @@
 		<title>Topic add</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="\static\forms.css">
-		<link rel="stylesheet" href="static/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 		<link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
 		
 	</head>
@@ -27,11 +27,38 @@
 		</div>
 	</body>
 </html>
-<script>
-    document.addEventListener('DOMContentLoaded', function(){
-        var submitButton = document.getElementById("submit_button");
+<script
+	src="/static/js/jquery-3.3.1.js">
+</script>
 
-        submitButton.onclick = (function() {
-            alert("Success !!"); });       // your code here
-    }, false);	
+<script>
+    $(function ()
+    {
+        $("form").submit(function (event)
+        {
+	        var topicTitle = $("input[name='title']").val();
+			var topicContent = $("input[name='content']").val();
+			var topicData = {
+			                "title": topicTitle,
+			                "content": topicContent
+			                };
+
+	        $.ajax({
+			    type: "POST",
+			    url: "/api/topic/add",
+			    data: JSON.stringify(topicData),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+			    success: function (response)
+			    {
+			        alert("Added topic successfully !");
+			    }
+			});        	
+
+            event.preventDefault();    
+        });
+
+    });
+
+
 </script>
