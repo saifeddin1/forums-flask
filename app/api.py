@@ -1,4 +1,4 @@
-from flask import request,jsonify, abort 
+from flask import request, jsonify, abort
 from app import models
 from app import app, member_store, post_store
 
@@ -8,61 +8,20 @@ def topic_get_all():
     posts = [post.__dict__() for post in post_store.get_all()]
     return jsonify(posts)
 
-@app.route("/api/topic/add", methods = ["POST"])
-def topic_create():
-	request_data = request.get_json()
-	try:
-	    new_post = models.Post(request_data["title"], request_data["content"])
-	    post_store.add(new_post)
-	    result = jsonify(new_post.__dict__())
-	except KeyError:
-		result = abort(400, f"Couldn't parse the request data !")
-	return result		
-
 
 @app.route("/api/topic/show/<int:id>")
 def api_topic_show(id):
-	post = post_store.get_by_id(id)
-<<<<<<< HEAD
-	return jsonify(post.__dict__())
+    post = post_store.get_by_id(id)
+    try:
+        result = jsonify(post.__dict__())
+    except AttributeError:
+        result = abort(404, f"topic with id: {id} doesn't exist")
 
-@app.route("/api/topic/edit/<int:id>", methods = ["PUT"])
-=======
-	try:
-		result = jsonify(post.__dict__())
-	except AttributeError:
-		result = abort(404, f"topic with id: {id} doesn't exist!")
-	return result
-		
-@app.route("/api/topic/edit/<int:id>", methods = ["POST"])
->>>>>>> f41669e7b9516eab1b251fd1a203eaa4a688639d
-def api_topic_edit(id):
-	request_data = request.get_json()
-	post = post_store.get_by_id(id)
-	try:
-		post.title = request_data["title"]
-		post.content = request_data["content"]
-		post_store.update(post)
-		return jsonify(post.__dict__())
-<<<<<<< HEAD
-		
+    return result
+
+
 @app.route("/api/topic/delete/<int:id>", methods = ["DELETE"])
 def api_topic_delete(id):
-	post = post_store.get_by_id(id)	
-	if post is not 	None :
-		post_store.delete(id)
-		return jsonify(post.__dict__())
-	else:
-		return ("post does not EXIST!")
-=======
-	except AttributeError:
-		result = abort(404, f"topic with id: {id} doesn't exist!")
-	except KeyError:
-		result = abort(400, f"Couldn't parse the request data !")
-	return result	
-
-@app.route("/api/topic/delete/<int:id>", methods = ["DELETE"])
-def topic_delete_api(id):
     try:
         result = post_store.delete(id)
         result = jsonify(result.__dict__())
@@ -70,5 +29,40 @@ def topic_delete_api(id):
         result = abort(404, f"topic with id: {id} doesn't exist")
 
     return result
->>>>>>> f41669e7b9516eab1b251fd1a203eaa4a688639d
+
+
+@app.route("/api/topic/add", methods = ["POST"])
+def api_topic_add():
+    request_data = request.get_json()
+    try:
+        new_post = models.Post(request_data["title"], request_data["content"])
+        post_store.add(new_post)
+        result = jsonify(new_post.__dict__())
+    except KeyError:
+        result = abort(400, f"Couldn't parse the request data !")
+
+    return result
+
+
+@app.route("/api/topic/update/<int:id>", methods = ["PUT"])
+def api_topic_edit(id):
+    request_data = request.get_json()
+    post = post_store.get_by_id(id)
+    try:
+        post.title = request_data["title"]
+        post.content = request_data["content"]
+        post_store.update(post)
+        result = jsonify(post.__dict__())
+    except AttributeError:
+        result = abort(404, f"topic with id: {id} doesn't exist")
+    except KeyError:
+        result = abort(400, f"Couldn't parse the request data !")
+
+    return result
+
+
+@app.errorhandler(400)
+def bad_request(error):
+    return jsonify(message = error.description)
+
 
