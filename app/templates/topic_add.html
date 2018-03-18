@@ -1,4 +1,5 @@
 <!doctype html>
+<<<<<<< HEAD
 <html>
 	<head>
 		<title>Topic add</title>
@@ -62,3 +63,36 @@
 
 
 </script>
+=======
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    </head>
+    <div class="container">
+      <h3>Create a new post</h3>
+    </div>
+    <div class="creation">
+      <form action="{{ url_for('topic_add') }}" method="post">
+        <h5 id="header5">Title</h5>
+        <input type="text" name="title" maxlength="20" />
+        <div id="content">
+          <h5 id="header55">Write post</h5>
+          <textarea name="content" maxlength="200" rows="16"/>
+          
+          </textarea>
+        </div>
+        <button type="button" class="btn btn-p">
+        Add
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
+>>>>>>> f41669e7b9516eab1b251fd1a203eaa4a688639d
