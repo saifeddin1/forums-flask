@@ -36,6 +36,9 @@
     {
         $("form").submit(function (event)
         {
+        	  event.preventDefault();    
+        });
+
 	        var topicTitle = $("input[name='title']").val();
 			var topicContent = $("input[name='content']").val();
 			var topicData = {
@@ -55,8 +58,6 @@
 			    }
 			});        	
 
-            event.preventDefault();    
-        });
 
     });
 
