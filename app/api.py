@@ -1,4 +1,4 @@
-from flask import request, jsonify, abort
+from flask import request, jsonify, abort, render_template, redirect, url_for
 from app import models
 from app import app, member_store, post_store
 
@@ -31,16 +31,20 @@ def api_topic_delete(id):
     return result
 
 
-@app.route("/api/topic/add", methods = ["POST"])
+@app.route("/api/topic/add", methods = ["GET", "POST"])
 def api_topic_add():
-    request_data = request.get_json()
-    try:
-        new_post = models.Post(request_data["title"], request_data["content"])
-        post_store.add(new_post)
-        result = jsonify(new_post.__dict__())
-    except KeyError:
-        result = abort(400, f"Couldn't parse the request data !")
-
+    if request.method == "POST":
+        request_data = request.get_json()
+        try:
+            new_post = models.Post(request_data["title"], request_data["content"])
+            post_store.add(new_post)
+            result = jsonify(new_post.__dict__())
+            
+        except KeyError:
+            result = abort(400, f"Couldn't parse the request data !")
+    else:
+        return redirect(url_for('topic_add'))   
+            
     return result
 
 
