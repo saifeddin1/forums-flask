@@ -18,7 +18,7 @@
 				<input type="text" name="title" maxlength="20" />
 				<div id="content">
 					<h5 id="header55">Write post</h5>
-					<textarea name="content" maxlength="200" rows="16"/>
+					<textarea name="content" id="myContent"maxlength="200" rows="16"/>
 					
 					</textarea>
 				</div>
@@ -41,7 +41,7 @@
 		    event.preventDefault();    
 	        
 	        var topicTitle = $("input[name='title']").val();
-			var topicContent = $("input[name='content']").val();
+			var topicContent = $("#myContent").val();
 			var topicData = {
 			                "title": topicTitle,
 			                "content": topicContent
