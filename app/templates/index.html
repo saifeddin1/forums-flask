@@ -86,7 +86,8 @@
     {
         $(".delete_topic").click(function(event){
             var id = event.target.id;
-            alert("id = "+id);
+            alert("Deleted");
+            window.location.href = '/';
             $.ajax({
                 type: "DELETE",
                 url: "/api/topic/delete/"+id,
