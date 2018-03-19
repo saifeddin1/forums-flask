@@ -61,7 +61,7 @@
           <td>
             <ul class="list-group">
               {% for post in posts %}
-                <li class="list-group-item"><a href="{{ url_for('topic_delete', id = post.id) }}">Delete</a></li>
+                <li class="list-group-item"><a class="delete_topic" id="{{ post.id }}" href="#">Delete</a></li>
               {% endfor %}
             </ul>
           </td>
@@ -81,6 +81,21 @@
   src="/static/js/jquery-3.3.1.js">
 </script>
 <!--delete api Js-->
-<script 
-  src="/static/js/app.js">
+<script>
+   $(function ()
+    {
+        $(".delete_topic").click(function(event){
+            var id = event.target.id;
+            alert("id = "+id);
+            $.ajax({
+                type: "DELETE",
+                url: "/api/topic/delete/"+id,
+                dataType: "json",
+                success: function (response)
+                {
+                    alert("Added topic successfully !");
+                }
+            });
+        });
+    });
 </script>
