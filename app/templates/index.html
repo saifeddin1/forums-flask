@@ -81,22 +81,6 @@
   src="/static/js/jquery-3.3.1.js">
 </script>
 <!--delete api Js-->
-<script>
-   $(function ()
-    {
-        $(".delete_topic").click(function(event){
-            var id = event.target.id;
-            alert("Deleted");
-            window.location.href = '/';
-            $.ajax({
-                type: "DELETE",
-                url: "/api/topic/delete/"+id,
-                dataType: "json",
-                success: function (response)
-                {
-                    alert("Added topic successfully !");
-                }
-            });
-        });
-    });
+<script 
+  src="/static/js/topic.delete.js">
 </script>
