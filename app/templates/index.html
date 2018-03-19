@@ -34,11 +34,14 @@
         </div>
       </nav>
     </div>
-    <div style="color: #777777;"><h2>Posts :</h2></div>
+    
     <table class="table table-bordered">
       <thead class="thead-light">
         <tr>
-          <th class="creation"><a href="{{ url_for('topic_add')}}">Create a new post</a></th>
+          <th class="creation">
+            Posts <button type="button" class="btn btn-outline-primary btn-sm"><a href="{{ url_for('topic_add') }}">Create a new post</a></button>
+          </th>
+
           <th class="titles">Edit</th>
           <th>Delete</th>
         </tr>
@@ -73,7 +76,7 @@
   <footer class="bd-footer text-muted">
     <div class="container-fluid p-3 p-md-5">
       <ul class="bd-footer-links">
-        <li><a href="https://github.com/saifeddin1/forums-flask">On GitHub</a></li>
+        <li><a href="https://github.com/saifeddin1/forums-flask">GitHub</a></li>
       </ul>
       <span class="text-muted"><strong>Done by</strong><em>♥Sifo_TheCoder♥</span><b> v1.3
     </div>
