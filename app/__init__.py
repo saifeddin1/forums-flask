@@ -5,8 +5,7 @@ import os
 app = Flask(__name__)
 
 folder_path = os.path.abspath(os.path.dirname(__file__))
-app.config["SQLALCHEMY_DATABASE_URI"] = f"""sqlite:///{os.path.join("C:\Users\Seif\Desktop\\forums-flask\\app", "my_database.db")}"""
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 from app import stores, dummy_data
