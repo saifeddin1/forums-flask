@@ -1,19 +1,19 @@
 #--------------------------- Models -------------------------------
-
+from app import db
 import datetime
 
 
-class Member:
-    def __init__(self, name, age):
-        self.id = 0
-        self.name = name
-        self.age = age
-        self.posts = []
+class Member(db.Model):
 
-    def __str__(self):
-        return "Name: {}, Age: {}".format(self.name, self.age)
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(50))
+    age = db.Column(db.Integer)
+    posts = db.relationship("Post", backref = "members")
 
-    def __dict__(self):
+    def __repr__(self):
+        return f"Id: {self.id}, Name: {self.name}, Age: {self.age}"
+
+    def as_dict(self):
         return {
             "id": self.id,
             "name": self.name,
@@ -21,18 +21,17 @@ class Member:
             "posts": self.posts,
         }
 
-class Post:
-    def __init__(self, title, content, member_id=0):
-        self.id = 0
-        self.title = title
-        self.content = content
-        self.member_id = member_id
-        self.date = datetime.datetime.now()
+class Post(db.Model):
 
-    def __str__(self):
-        return f"Title: {self.title}, Content: {self.content}, Date: {self.date}"
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(50))
+    content = db.Column(db.String(800))
+    member_id = db.Column(db.Integer, db.ForeignKey("member.id"))
+
+    def __repr__(self):
+        return f"Title: {self.title}, Content: {self.content}"
   
-    def __dict__(self):
+    def as_dict(self):
         return {
             "id": self.id,
             "title": self.title,
