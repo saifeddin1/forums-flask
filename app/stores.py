@@ -2,7 +2,7 @@
 import itertools
 import copy
 
-import models, db
+from app import models, db
 from sqlalchemy import desc, func
 
 
