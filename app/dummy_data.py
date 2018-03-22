@@ -1,4 +1,4 @@
-from app import models
+from app import models, db
 
 dummy_members = [
     models.Member(name="Mohammed", age=20),
@@ -20,10 +20,11 @@ dummy_posts = [
     models.Post(title="Operating Systems", content="Ewww", member_id=3),
 ]
 
+
 def seed_stores(member_store, post_store):
     db.drop_all()
     db.create_all()
-    
+
     for member in dummy_members:
         member_store.add(member)
 
