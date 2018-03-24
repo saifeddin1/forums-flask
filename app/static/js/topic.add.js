@@ -1,6 +1,6 @@
 $(function ()
 {
-	$("form").submit(function (event)
+	$("#submit_button").submit(function (event)
 	{
 		event.preventDefault();    
 			
