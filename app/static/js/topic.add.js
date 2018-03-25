@@ -22,6 +22,7 @@ $(function ()
 				alert("Topic added succussfuly !");
 				window.location.href = '/';
 			}
-		});        	
+		});
+		event.preventDefault();        	
 	});
 });
