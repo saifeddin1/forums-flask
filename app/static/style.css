@@ -1,6 +1,6 @@
   .box {
-     margin-bottom: 3cm;
-     background: #EFF0F1;
-     margin-bottom: auto;
+    width: 100px;
+    height: 100px;
+    background-color: #F4F4F4;
 
   }
