@@ -53,6 +53,10 @@ def topic_show(id):
         return render_template("topic_show.html", post = post_store.get_by_id(id))
     return redirect(url_for("home"))
 
+@app.route("/about/")
+def show_info():
+    return render_template("about.html")
+
 #Credits: Mr.Yassser Al-najjar
 @app.errorhandler(404)
 def page_not_found(error):
