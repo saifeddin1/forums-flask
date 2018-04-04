@@ -47,7 +47,7 @@
       <thead class="thead-light">
         <tr>
           <th class="creation">
-            Posts <button type="button" class="btn btn-outline-dark btn-sm"><a href="{{ url_for('topic_add') }}"> + Create a new post</a></button>
+            Posts <button type="button" class="btn btn-outline-primary btn-sm"><a href="{{ url_for('topic_add') }}"> + Create a new post</a></button>
           </th>
           <th class="titles">Edit</th>
           <th>Delete</th>
@@ -58,21 +58,21 @@
           <td>
             <ul class="list-group">
               {% for post in posts %}
-                <li class="list-group-item"><a href="{{ url_for('topic_show', id = post.id) }}">{{ post.title }}</a></li>
+                <li class="list-group-item"><a class="btn-sm btn-light" href="{{ url_for('topic_show', id = post.id) }}">{{ post.title }}</a></li>
               {% endfor %}
             </ul>
           </td>
           <td>
             <ul class="list-group">
               {% for post in posts %}
-                <li class="list-group-item"><a href="{{ url_for('topic_edit', id = post.id) }}">Edit</a></li>
+                <li class="list-group-item"><a class="btn-sm btn-info" href="{{ url_for('topic_edit', id = post.id) }}">Edit</a></li>
               {% endfor %}
             </ul>
           </td>
           <td>
             <ul class="list-group">
               {% for post in posts %}
-                <li class="list-group-item"><a class="delete_topic" id="{{ post.id }}" href="#">Delete</a></li>
+                <li class="list-group-item"><a class="delete_topic btn-sm btn-danger" id="{{ post.id }}" href="#">Delete</a></li>
               {% endfor %}
             </ul>
           </td>
